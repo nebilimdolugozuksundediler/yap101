@@ -1,26 +1,18 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 26 08:22:10 2025
-
-@author: Ayşenil
-"""
-
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.stats import ttest_ind, pearsonr
 
-# Veri setini yükleme
-df = pd.read_csv("games.csv")  # Dosyayı kendi sistemine kaydet ve adını güncelle
+df = pd.read_csv("games.csv")  
 print(df.head())
 
-# Sürekli değişkenlerin özeti
+
 print(df[["turns", "white_rating", "black_rating", "opening_ply"]].describe())
 
-# Kategorik değişkenlerin frekansı
+
 print(df["victory_status"].value_counts())
 print(df["winner"].value_counts())
-print(df["opening_name"].value_counts().head(10))  # En yaygın 10 açılış
+print(df["opening_name"].value_counts().head(10))  
 
 plt.figure(figsize=(10, 6))
 sns.boxplot(x="winner", y="white_rating", data=df[df["winner"] != "draw"])
